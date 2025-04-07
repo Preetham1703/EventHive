@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENTHIVE</title>
+    <link rel="stylesheet" href="library/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="library/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="images/logo.jpg">
+    <script>
+        function validateName() {
+            let fullname = document.getElementById("fullname").value;
+            let regex=/^[A-Z]+$/;
+            if (!regex.test(fullname)) {
+                document.getElementById("result2").innerText = "❌Name should contain only uppercase letters ";
+                document.getElementById("result2").style.color = "red";
+                event.preventDefault();
+             }
+             else{
+                document.getElementById("result2").innerText =" ";
+             }
+            
+        }
+        function validateMobile() {
+            let mobile = document.getElementById("mobile").value;
+            let regex=/^[0-9]+$/;
+            if (!regex.test(mobile)) {
+                document.getElementById("result3").innerText = "❌Mobile should contain only digits ";
+                document.getElementById("result3").style.color = "red";
+                event.preventDefault();
+             }
+             else{
+                document.getElementById("result3").innerText =" ";
+             }
+            
+        }
+        function validateEmail() {
+            let email = document.getElementById("email").value;
+            let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!regex.test(email)) {
+                document.getElementById("result").innerText = "❌ Invalid Email !";
+                document.getElementById("result").style.color = "red";
+                event.preventDefault();
+             } 
+             else{
+                document.getElementById("result").innerText =" ";
+             }
+        }
+        function validatePassword() {
+            let password = document.getElementById("password").value;
+            let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (!regex.test(password)) {
+                document.getElementById("result1").innerText = "❌ Weak Password ! Must be atleast 8 characters,include uppercase lowercase,number and special character.";
+                document.getElementById("result1").style.color = "red";
+                event.preventDefault();
+            }
+            else{
+                document.getElementById("result1").innerText =" ";
+             }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("images/login\ background.jpg"); 
+            background-size: cover;
+            background-repeat: no-repeat; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            padding-top: 70px;
+        }
+
+        .login-container {
+            background: rgb(237, 234, 234);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .remember-me {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .remember-me a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: blue;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .register-link {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .register-link a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            margin-top: auto; 
+            padding-bottom: 0px;
+        }
+        #footer a{
+            text-decoration: none;
+            color:dimgray;
+        }
+        #footer a:hover{
+            color: blue;
+            text-decoration: none;
+        }
+        .return a{
+            text-decoration: none;
+            color: blue;
+        }
+
+        
+        @media (max-width: 768px) { 
+            .login-container {
+                width: 90%;
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 480px) { 
+            .login-container {
+                width: 100%;
+                max-width: 300px;
+                padding: 15px;
+            }
+            .login-container h1 {
+                font-size: 20px;
+            }
+            .input-group input {
+                padding: 8px;
+            }
+            .login-btn {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="login-container">
+            <br>
+            <h4>Create your Account</h4>
+            <br>
+            <form action="login-process.php" method="POST">
+                <div class="input-group">
+                    <!-- <i class="fa-solid fa-user"></i> -->
+                    <input type="name" class="form-control" id="fullname" name="fullname" placeholder="FULL NAME" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                </div>
+                <div class="input-group">
+                    <!-- <i class="fa-duotone fa-regular fa-key"></i> -->
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Create strong Password" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">📞 +91</span>
+                    <input type="tel" class="form-control" id="mobile" placeholder="Enter your mobile number" aria-label="Mobile Number" required>
+                </div>
+                <button onclick="validatePassword(),validateEmail(),validateName(),validateMobile()" type="submit" class="login-btn">Register</button>
+                <span id="result2"></span><br>
+                <span id="result"></span><br>
+                <span id="result1"></span><br>
+                <span id="result3"></span>
+            </form>
+            <p class="register-link">Already have an account? <a href="login.html">Login</a></p>
+            <!-- <p class="return"><a href="demo.html">Return</a></p> -->
+        </div>
+    </div>
+
+
+    <footer id="footer">
+        <p>Copyrights &copy; 2025 EventHive. All rights reserved.</p>
+        <p>📧<a href="mailto:preethambk0111@gmail.com">preethambk0111@gmail.com</a></p>
+        <p> 📞<a href="tel:+916281175531" >+916281175531</a></p>
+    </footer>
+<!-- </div> -->
+
+</body>
+</html>
